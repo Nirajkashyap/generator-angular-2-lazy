@@ -33,7 +33,11 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "rootDir":"__tests__"
+    "rootDir":"__tests__",
+    
+    "coverageDirectory": "../coverage",    
+    "collectCoverage": true  
+   
   },
   "scripts": {
     "prepublish": "nsp check",
