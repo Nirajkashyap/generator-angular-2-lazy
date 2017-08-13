@@ -12,53 +12,53 @@ module.exports = Generator.extend({
     ));
 
     var prompts = [{
-        type: 'input',
-        name: 'name',
-        message: 'What is your project name?',
-        default: path.parse(process.cwd()).name, // Default to current folder name
-        store: true
-      },
-      {
-        type: 'input',
-        name: 'description',
-        message: 'Enter a short project description:',
-        default: '',
-        store: true
-      },
-      {
-        type: 'input',
-        name: 'version',
-        message: 'What semver version should the project start on?',
-        default: '0.0.0',
-        store: true
-      },
-      {
-        type: 'input',
-        name: 'license',
-        message: 'What license is the project distributed under?',
-        default: 'UNLICENSED',
-        store: true
-      },
-      {
-        type: 'confirm',
-        name: 'isprivate',
-        message: 'Is this a private project?',
-        default: true,
-        store: true
-      },
-      {
-        type: 'input',
-        name: 'author',
-        message: 'Who/what is the author of this project?',
-        default: '',
-        store: true
-      },
-      {
-        type: 'input',
-        name: 'username',
-        message: 'What is your github user/organisation name?',
-        store: true
-      },
+      type: 'input',
+      name: 'name',
+      message: 'What is your project name?',
+      default: path.parse(process.cwd()).name, // Default to current folder name
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'description',
+      message: 'Enter a short project description:',
+      default: '',
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'version',
+      message: 'What semver version should the project start on?',
+      default: '0.0.0',
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'license',
+      message: 'What license is the project distributed under?',
+      default: 'UNLICENSED',
+      store: true
+    },
+    {
+      type: 'confirm',
+      name: 'isprivate',
+      message: 'Is this a private project?',
+      default: true,
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'author',
+      message: 'Who/what is the author of this project?',
+      default: '',
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'username',
+      message: 'What is your github user/organisation name?',
+      store: true
+    },
       // {
       //   type: 'confirm',
       //   name: 'cssprocessor',
@@ -81,23 +81,23 @@ module.exports = Generator.extend({
       //     return val.toLowerCase();
       //   }
       // },
-      {
-        type: 'confirm',
-        name: 'jquery',
-        message: 'Would you like to use jquery ?',
-        default: true
-      },
-      {
-        when: function (prompts) {
-        // console.log(prompts);
+    {
+      type: 'confirm',
+      name: 'jquery',
+      message: 'Would you like to use jquery ?',
+      default: true
+    },
+    {
+      when: function (prompts) {
+        // Console.log(prompts);
         prompts.bootstrap = false;
         return prompts.jquery;
-        },
-        type: 'confirm',
-        name: 'bootstrap',
-        message: 'Would you like to use bootstrap css 3.7 ?',
-        default: true
-      }
+      },
+      type: 'confirm',
+      name: 'bootstrap',
+      message: 'Would you like to use bootstrap css 3.7 ?',
+      default: true
+    }
     ];
 
     return this.prompt(prompts).then(function (props) {
@@ -107,8 +107,7 @@ module.exports = Generator.extend({
   },
 
   writing: function () {
-
-    // console.log(this.props.cssstyle);
+    // Console.log(this.props.cssstyle);
     // if (this.props.cssstyle === "less") {
 
     //   this.props.less = true;
@@ -117,7 +116,7 @@ module.exports = Generator.extend({
     //   this.props.less = false;
     //   this.props.scss = true;
     // }
-    
+
     // copy sample file
     this.fs.copy(
       this.templatePath('_dummyfile.txt'),
@@ -184,7 +183,7 @@ module.exports = Generator.extend({
       this.destinationPath('webpack.config.js')
     );
 
-    //console.log(this.props);
+    // Console.log(this.props);
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
@@ -200,7 +199,7 @@ module.exports = Generator.extend({
       this.templatePath('./src'),
       this.destinationPath('./src')
     );
-    // console.log(this.props);
+    // Console.log(this.props);
     this.fs.copyTpl(
       this.templatePath('./src/app/app.module.ts'),
       this.destinationPath('./src/app/app.module.ts'),
@@ -213,8 +212,7 @@ module.exports = Generator.extend({
       this.props
     );
 
-
-    // if (this.props.cssstyle === "less") {
+    // If (this.props.cssstyle === "less") {
     //   console.log("removing sccs file");
     //   this.fs.delete(this.destinationPath('./src/*.scss'));
     // } else {
@@ -224,8 +222,8 @@ module.exports = Generator.extend({
   },
 
   install: function () {
-    // this.yarnInstall();
-    
+    // This.yarnInstall();
+
     this.installDependencies({
       yarn: true,
       npm: false,
