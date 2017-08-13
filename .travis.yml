@@ -24,7 +24,7 @@ install:
   - npm install
 
 after_install:
-  - echo "echoing in after_install steps"    
+  - 'echo "echoing in after_install steps" '    
 
 
 before_script:
@@ -37,7 +37,7 @@ script:
   - npm run test
 
 after_success:
-  - echo 'please write auto merge script here'
+  - 'echo "please write auto merge script here"   '
 
 env:
   global:
@@ -49,7 +49,7 @@ after_failure:
   - echo "echoing in after_failure steps"
 
 after_script:
-  - echo "echoing in after_script steps and will public coverage to coveralls" 
+  - 'echo "echoing in after_script steps and will public coverage to coveralls"  ' 
   - 'cat ./coverage/lcov.info | coveralls'
 
 
