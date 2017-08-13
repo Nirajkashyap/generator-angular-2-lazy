@@ -32,11 +32,12 @@
     "yosay": "^2.0.0"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "rootDir":"__tests__"
   },
   "scripts": {
     "prepublish": "nsp check",
-    "pretest": "eslint . --fix",
+    "pretest": "",
     "test": "jest"
   },
   "eslintConfig": {
