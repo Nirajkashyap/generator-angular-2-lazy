@@ -16,6 +16,25 @@ Then generate your new project:
 yo angular-2-lazy
 ```
 
+this will create base structure like [AngularClass](https://github.com/AngularClass/angular-starter) 
+
+integration 
+1. angular http interceptor
+2. i18n from @ngx-translate/core and @biesbjerg/ngx-translate-extract
+3. sample for pre/lazy loaded moudles and route 
+4. sample for auth-gaurd service
+
+sub generator
+
+```bash
+yo angular-2-lazy:component 
+```
+
+```bash
+yo angular-2-lazy:page --optional service integration
+```
+
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
