@@ -28,7 +28,10 @@ before_script:
 script:
 - npm run test
 after_success:
-- 'echo "please write auto merge script here"   '
+  - "curl -o /tmp/travis-automerge https://gist.githubusercontent.com/Nirajkashyap/dc9782229cd10cb7d3b6732f928d7d7a/raw/b0bf72adab7dabd8d44bf8e47b5c236d1030a34c/travis-automerge"
+  - "chmod a+x /tmp/travis-automerge"
+  - "BRANCHES_TO_MERGE_REGEX='develop' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=cdown/srt /tmp/travis-automerge"
+
 env:
   global:
   - secure: cjSbs+51rGnIQeUV/2ekYdZ3uC+k25i5gQittuULyzJrgXMMmBl1p0T1bbC6f2xVBjKmPb09iO7jRK9wAKheD2DXI+boOXk6kppUrVRsKLGqUMVCweAa9wsdi4u8JoW9mGqJCypl0y5T/b7iJYGvHCJLadsET9mvyYCNHM63GRM=
@@ -39,8 +42,7 @@ after_script:
 - 'echo "echoing in after_script steps and will public coverage to coveralls"  '
 - cat ./coverage/lcov.info | coveralls
 before_deploy:
-- test $TRAVIS_TEST_RESULT = 0 \# check that build passed successfully && cd $TRAVIS_BUILD_DIR
-  \ && tar -zcvf amber-storm-$TRAVIS_BRANCH.tar.gz dist
+- test $TRAVIS_TEST_RESULT = 0 
 deploy:
   provider: npm
   email: niraj38re@gmail.com
