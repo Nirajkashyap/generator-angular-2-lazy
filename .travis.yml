@@ -1,70 +1,53 @@
 language: node_js
 node_js:
-  - 7
-  - 6
-
+- 7
+- 6
 addons:
   apt:
     sources:
-      - google-chrome
+    - google-chrome
     packages:
-      - google-chrome-stable
-
+    - google-chrome-stable
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm install npm@5 -g
-  - npm cache verify
-  - npm prune
-  - npm update      
-
+- npm install npm@5 -g
+- npm cache verify
+- npm prune
+- npm update
 install:
-  - npm install
-
+- npm install
 after_install:
-  - 'echo "echoing in after_install steps" '    
-
-
+- 'echo "echoing in after_install steps" '
 before_script:
-  - npm rebuild node-sass
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3  
-
+- npm rebuild node-sass
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
 script:
-  - npm run test
-
+- npm run test
 after_success:
-  - 'echo "please write auto merge script here"   '
-
+- 'echo "please write auto merge script here"   '
 env:
   global:
   - secure: cjSbs+51rGnIQeUV/2ekYdZ3uC+k25i5gQittuULyzJrgXMMmBl1p0T1bbC6f2xVBjKmPb09iO7jRK9wAKheD2DXI+boOXk6kppUrVRsKLGqUMVCweAa9wsdi4u8JoW9mGqJCypl0y5T/b7iJYGvHCJLadsET9mvyYCNHM63GRM=
   - secure: R3O/O5BskbWFSqSN9G1x1EDo83MHiyLue0GVMf5cCV+eiJHkag0A7cxYVGpoWzTx+t1UArMIpGLSzuIMiBpnLsR0vjm3R8UWhYM1ruqJCqdDP1bmJ7uYKGlJau2xHG86fc+190ChSY1l5ipjyui60564Yp02scePbX1aXbQXGbY=
-  
-
 after_failure:
-  - echo "echoing in after_failure steps"
-
+- echo "echoing in after_failure steps"
 after_script:
-  - 'echo "echoing in after_script steps and will public coverage to coveralls"  ' 
-  - 'cat ./coverage/lcov.info | coveralls'
-
-
+- 'echo "echoing in after_script steps and will public coverage to coveralls"  '
+- cat ./coverage/lcov.info | coveralls
 before_deploy:
-- test $TRAVIS_TEST_RESULT = 0 \# check that build passed successfully
-  && cd $TRAVIS_BUILD_DIR \
-  && tar -zcvf amber-storm-$TRAVIS_BRANCH.tar.gz dist
-
+- test $TRAVIS_TEST_RESULT = 0 \# check that build passed successfully && cd $TRAVIS_BUILD_DIR
+  \ && tar -zcvf amber-storm-$TRAVIS_BRANCH.tar.gz dist
 deploy:
-  provider: releases
+  provider: npm
+  email: niraj38re@gmail.com
   api_key:
-    secure: securekeyhere
-  file: myrepo-$TRAVIS_BRANCH.tar.gz
-  skip_cleanup: true
+    secure: aV40NbGBqWRi2wlDzpAr9gFhnQ9lCFZ7Kfku8od1vqgP0w8gsQFBcD+Kdc40Q+s9GO6WLd8fPLnOxYYzwqtAelnZ/LKWhUyu0hcQ509L6urt5b3JSjWUNUolZJIaSIzWmlu5twgb5T6Qa6i2an/YE0VVQfgAr3sqUJDaqcgEYsNSMcge8bQc9I0UKObQkODGgHdibloIurWRCvS/uxe0C4X3y7PD6cVM+2Z7kD/QonDqni6c0wKydeN2Rocs4IRM3Cchf3E/tgGiRW2xZIEL3s0uqIyZbcFc8t4IR/h1GlXrlEhVWTT3vGOXEn9E4P4SkhEcuBTnJZBJCO7WRj19HY+3FpK3oq4LwlQxG9tIAvK+TEjVrrkcccWX/LyNtZdl6HhEXsGJFH5AQBFcSZ4ivAZkTzhzeSTdUR0PKYhR0XbBO3TKs6B/FUWdPao4njJEa+RFRO8GO1CtxOGNDI6FAM0HIE6P/IsUuxKNgAe0FzmbR4PS6SE7edwnggtXJNIBNpGo0Ur7iQFNgo3I7pqBy1RDUOQX1ci9Vv9dJeq9FAI8bj14eAw0levcA7RK07OOPn4eyr3qdIbVuQ0jDIV1HD2Fi3DSfIFcLJYWLaunDPFDMa1SBLiK5aPxkHk2a9SuGRrIRvECiNGRvY44j6GKio61nOPjTpkdtBCUU4Zyq2E=
   on:
-    condition: $PRODBUILDCOMPLETE = true    
-    all_branches: true
-    tags: true  
+    repo: Nirajkashyap/generator-angular-2-lazy
+    branch: master
+     tags: true
+     tag: next
