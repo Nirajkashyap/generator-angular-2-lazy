@@ -38,15 +38,14 @@ env:
   - secure: bb
 after_failure:
 - echo "echoing in after_failure steps"
-after_script:
-- 'echo "echoing in after_script steps and will public coverage to coveralls"  '
-- cat ./coverage/lcov.info | coveralls
+
 before_deploy:
 - test $TRAVIS_TEST_RESULT = 0 
 deploy:
   provider: npm
   email: niraj38re@gmail.com
   tag: next
+  skip_cleanup: true
 
   api_key:
     secure: VfpkqyKjdEWxMrUBZkwg1S5WX9Ud8c4EUWYMbCG7o5m3l5tEbIZYecS99IeJ6BxXrjvsSuYwhUSdixQa3f8l8pBSdmxfVikRqw+iNd9R9Ft4rlOWxXAWTrge/EYpaEFNEGLSxnrh8zB+p3cdvGxZN7DxGWQq18CaTi4mpwBvq1k1cxFeGIZWgYf3U/OEpEXtBR/j8cbpKBfMO9P0PA/zuoyEOpWF6z47yk/2Cc/B3J2NLdICyOQQuBiB6xHG953ftpdpq8W6DFq72VjPWwIsR8fzpRo5YiTJ6rEEVDgqR+AFXj60jZmYNr4tIFEHDTR3m7UltAHFWzsy15js3b8LXVtFLVxm6wUmkqs4H1P0gTFH9saWrgWmwNwAN6vq2Ygluv4y1G/C93afJ0sdqGc2+3E/eEYr8ZsFZoeRAg4RF3qm7feaQyxCdlALkSqb15Qz086YcMoByPjGVRZCtmJ6Z0qnaVPUn05FjfYa/RB9NoaY5N1ATZMJpwstzdWFysvXEWq1lJa9bUXlzLCcLa8cvSDgUkMfAMZ5QB8RqGBI5gkhdVCNatnQiweK8YJQcvJLCJBXMah9bUubcRiKxa27HOXzmDykAI0c/KfFoIuZaXHGwZ7P0O+UmX4qixJHcX8W0xMUYt+A8L4AD37/NjhScEwknGgKABsvx402UalDUgw=
@@ -55,3 +54,6 @@ deploy:
     repo: Nirajkashyap/generator-angular-2-lazy
     branch: master
     
+after_script:
+- 'echo "echoing in after_script steps and will public coverage to coveralls"  '
+- cat ./coverage/lcov.info | coveralls
