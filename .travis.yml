@@ -46,8 +46,9 @@ deploy:
   email: niraj38re@gmail.com
   api_key:
     secure: aV40NbGBqWRi2wlDzpAr9gFhnQ9lCFZ7Kfku8od1vqgP0w8gsQFBcD+Kdc40Q+s9GO6WLd8fPLnOxYYzwqtAelnZ/LKWhUyu0hcQ509L6urt5b3JSjWUNUolZJIaSIzWmlu5twgb5T6Qa6i2an/YE0VVQfgAr3sqUJDaqcgEYsNSMcge8bQc9I0UKObQkODGgHdibloIurWRCvS/uxe0C4X3y7PD6cVM+2Z7kD/QonDqni6c0wKydeN2Rocs4IRM3Cchf3E/tgGiRW2xZIEL3s0uqIyZbcFc8t4IR/h1GlXrlEhVWTT3vGOXEn9E4P4SkhEcuBTnJZBJCO7WRj19HY+3FpK3oq4LwlQxG9tIAvK+TEjVrrkcccWX/LyNtZdl6HhEXsGJFH5AQBFcSZ4ivAZkTzhzeSTdUR0PKYhR0XbBO3TKs6B/FUWdPao4njJEa+RFRO8GO1CtxOGNDI6FAM0HIE6P/IsUuxKNgAe0FzmbR4PS6SE7edwnggtXJNIBNpGo0Ur7iQFNgo3I7pqBy1RDUOQX1ci9Vv9dJeq9FAI8bj14eAw0levcA7RK07OOPn4eyr3qdIbVuQ0jDIV1HD2Fi3DSfIFcLJYWLaunDPFDMa1SBLiK5aPxkHk2a9SuGRrIRvECiNGRvY44j6GKio61nOPjTpkdtBCUU4Zyq2E=
+  tag: next  
   on:
     repo: Nirajkashyap/generator-angular-2-lazy
     branch: master
+     tags: true
      
-     tag: next
