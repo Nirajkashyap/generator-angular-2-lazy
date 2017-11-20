@@ -49,5 +49,5 @@ deploy:
   on:
     repo: Nirajkashyap/generator-angular-2-lazy
     branch: master
-     tags: true
+     
      tag: next
