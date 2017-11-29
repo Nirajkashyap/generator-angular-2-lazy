@@ -27,10 +27,11 @@ before_script:
 - sleep 3
 script:
 - npm run test
-after_success:
-  - "curl -o /tmp/travis-automerge https://gist.githubusercontent.com/Nirajkashyap/dc9782229cd10cb7d3b6732f928d7d7a/raw/b0bf72adab7dabd8d44bf8e47b5c236d1030a34c/travis-automerge"
-  - "chmod a+x /tmp/travis-automerge"
-  - "BRANCHES_TO_MERGE_REGEX='develop' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=cdown/srt /tmp/travis-automerge"
+
+# after_success:
+#   - "curl -o /tmp/travis-automerge https://gist.githubusercontent.com/Nirajkashyap/dc9782229cd10cb7d3b6732f928d7d7a/raw/b0bf72adab7dabd8d44bf8e47b5c236d1030a34c/travis-automerge"
+#   - "chmod a+x /tmp/travis-automerge"
+#   - "BRANCHES_TO_MERGE_REGEX='develop' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=cdown/srt /tmp/travis-automerge"
 
 env:
   global:
@@ -40,7 +41,7 @@ after_failure:
 - echo "echoing in after_failure steps"
 
 before_deploy:
-- test $TRAVIS_TEST_RESULT = 0 
+- echo test $TRAVIS_TEST_RESULT = 0 
 deploy:
   provider: npm
   email: niraj38re@gmail.com
